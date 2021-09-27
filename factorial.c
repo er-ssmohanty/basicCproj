@@ -6,8 +6,7 @@ int main(){
     while (num!=1)
     {
         factorial=factorial*num;
-        num=num-1;
-        /* code */
+        num=num-1
     }
     printf("%d\n",factorial);
     //return factorial0;s
