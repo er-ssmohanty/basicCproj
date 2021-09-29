@@ -5,6 +5,8 @@ int digitcount(int num){
     int a=log10(num)+1;
     return a;
 }
+
+
 void oddhandle(int num, int digcount){
     int oldigits[digcount];
     int digits[digcount-1];
