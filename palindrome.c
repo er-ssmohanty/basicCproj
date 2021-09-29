@@ -1,139 +1,21 @@
+
+
 #include<stdio.h>
-#include<math.h>
-#include<string.h>
-int digitcount(int num){
-    int a=log10(num)+1;
-    return a;
-}
-
-
-void oddhandle(int num, int digcount){
-    int oldigits[digcount];
-    int digits[digcount-1];
-    int left[digcount/2];
-    int right[digcount/2];
-    int res=1,test=0;
-    
-    for (int i = 0; i <= digcount; i++)
-    {//digit string
-        oldigits[i]=num%10;
-        num=num/10;
+int main(){
+    int number, reverse_number = 0, temp_number;
+    printf("Enter a number to check palindrome value:"); // allow user to enter a number    
+    scanf("%d", &number); // takes value from user
+    temp_number = number;  //store number to temp_number
+    while (number != 0){
+        reverse_number = reverse_number * 10;
+        reverse_number = reverse_number + number % 10;
+        number = number / 10;
     }
-
-    for (int i = 0; i <= digcount; i++)
-    {
-        if (i<digcount/2)
-        {
-            digits[i]=oldigits[i];    
-        }
-        else if (i==digcount/2)
-        {
-            continue;
-        }
-        else
-        {
-            digits[i-1]=oldigits[i];
-        }   
+    if(temp_number == reverse_number){
+        printf("Given number is palindrome"); //if match, print palindrome
     }
-    
-    for (int i = digcount/2-1; i >= 0; i--)
-    {
-        right[i]=digits[digcount/2-i-1];
-    }
-        
-    for (int i = 0; i < digcount/2; i++)
-    {
-        left[i]=digits[i+digcount/2];
-    }
-
-    
-    for (int i = 0; i < digcount/2; i++)
-    {
-            if (left[i]==right[i])
-            {
-                res=res*1;
-                //test=test+1;
-            }
-            else
-            {
-                res=res*0;
-            }
-            
-            
-    }
-    
-    if (res==1)
-    {
-        printf("...\nIt is a palindrome number.\n");
-    }
-    else
-    {
-        printf("!!!\nIt not is a palindrome number.\n");
-    }
-    
-}
-void evenhandle(int num, int digcount){
-    int digits[digcount];
-    int left[digcount/2];
-    int right[digcount/2];
-    int res=1,test=0;
-    
-    for (int i = 0; i < digcount; i++)
-    {//digit string
-        digits[i]=num%10;
-        num=num/10;
-    }
-
-
-    for (int i = digcount/2-1; i >= 0; i--)
-    {
-        right[i]=digits[digcount/2-i-1];
-    }
-        
-    for (int i = 0; i < digcount/2; i++)
-    {
-        left[i]=digits[i+digcount/2];
-    }
-
-    
-    for (int i = 0; i < digcount/2; i++)
-    {
-            if (left[i]==right[i])
-            {
-                res=res*1;
-                //test=test+1;
-            }
-            else
-            {
-                res=res*0;
-            }
-            
-            
-    }
-    
-    if (res==1)
-    {
-        printf("...\nIt is a palindrome number.\n");
-    }
-    else
-    {
-        printf("!!!\nIt not is a palindrome number.\n");
-    }
-    
-}
-int main()
-{
-    int num,digcount; //rev;
-    printf("Enter a number: ");
-    scanf("%d",&num);
-    digcount = digitcount(num);
-    if (digcount%2==0)
-    {
-        evenhandle(num,digcount);
-    }
-    else
-    {
-        oddhandle(num,digcount);
+    else{
+        printf("Given number is not palindrome"); // If it don’t match with original print not palindrome
     }
     return 0;
 }
