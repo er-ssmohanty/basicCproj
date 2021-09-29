@@ -28,22 +28,23 @@ void evenhandle(int num, int digcount){
     }
 
 
-    for (int i = 0; i < digcount/2; i++)
+    for (int i = digcount/2-1; i >= 0; i--)
     {
-        right[i]=digits[i];
+        right[i]=digits[digcount/2-i-1];
     }
         
     for (int i = 0; i < digcount/2; i++)
     {
         left[i]=digits[i+digcount/2];
     }
+
     
-    for (int i = 0; i < digcount; i++)
+    for (int i = 0; i < digcount/2; i++)
     {
-            if (left[i]==right[digcount-i])
+            if (left[i]==right[i])
             {
                 res=res*1;
-                test=test+1;
+                //test=test+1;
             }
             else
             {
@@ -55,15 +56,13 @@ void evenhandle(int num, int digcount){
     
     if (res==1)
     {
-        printf("\nIt is a palindrome number.\n");
+        printf("...\nIt is a palindrome number.\n");
     }
     else
     {
-        printf("\nIt not is a palindrome number.\n");
+        printf("!!!\nIt not is a palindrome number.\n");
     }
     
-    printf("%d\n",test);
-
 }
 int main()
 {
