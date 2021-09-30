@@ -16,5 +16,6 @@ int main(){
     else
     {
         printf("Alpha = %lf and Beta = %lf\n",(-b+sqrt((b*b)-(4*a*c)))/(2*a),(-b-sqrt((b*b)-(4*a*c)))/(2*a));
+        return 0;
     }
 }
