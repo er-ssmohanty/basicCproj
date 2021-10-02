@@ -3,24 +3,53 @@
     Progress*/
 #include<stdio.h>
 #include<math.h>
+char hexa(int decnum){
+    if (decnum==15)
+    {
+        return 'F';
+    }
+    else if (decnum==14)
+    {
+        return 'E';
+    }
+    else if (decnum==13)
+    {
+        return 'D';
+    }
+    else if (decnum==12)
+    {
+        return 'C';
+    }
+    else if (decnum==11)
+    {
+        return 'B';
+    }
+    else if (decnum==10)
+    {
+        return 'A';
+    }
+    else
+    {
+        return decnum;
+    }
+}
 int main(){
-    double decnum;
+    int decnum;
     printf("Enter a decimal(base 10) integer: ");
-    scanf("%lf",&decnum);
-    int no_of_bits = log2(decnum)+1;
-    int binum[no_of_bits]; int oldec= decnum; 
-    for (int i = no_of_bits-1; i >= 0; i--){
-        if (decnum>=pow(2,i)){
-            binum[i]=1;
-            decnum=decnum-pow(2,i);
-        }
-        else{
-            binum[i]=0;
-        }
+    scanf("%d",&decnum);
+    int hexdigs = (log10(decnum)/log10(16))+1;
+    char hexnum[hexdigs];
+    for (int i = hexdigs-1; i >= 0 ; i--)
+    {
+        hexnum[hexdigs]=decnum%16;
+        
+        decnum=decnum/16;
     }
-    printf("Binary form of %d is ",oldec);
-    for (int i = no_of_bits-1; i >= 0; i--){
-        printf("%d",binum[i]);
+    for (int i = hexdigs-1; i >= 0; i--)
+    {
+        printf("%c",hexnum[i]);
     }
+    
+
     printf("\n");
 }
